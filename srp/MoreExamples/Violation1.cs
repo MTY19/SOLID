@@ -5,6 +5,7 @@ namespace SOLID.SRP.MoreExamples
     class Violation1
     {
         //example with business logic and formatting
+        //violation reason is : contain two concern, these are get report and format report
         public string GetReport()
         {
             int clientsNumber = GetNumberOfClients();
@@ -24,7 +25,7 @@ namespace SOLID.SRP.MoreExamples
         }
 
         #region Irrelevant
-
+        
         private int GetUnsatisfiedClients()
         {
             throw new NotImplementedException();
@@ -51,8 +52,10 @@ namespace SOLID.SRP.MoreExamples
     class Violation2
     {
         //example with business logic and changing the state - mechanics and policy
+        //violation reason is : get driver and business logic is different concerns. Solution receive notification with other event 
         public void FindAlarmDevice()
         {
+            //
             var driver = new AlarmDriver();
             string port = driver.Find();
             if (!string.IsNullOrWhiteSpace(port))
@@ -119,6 +122,7 @@ namespace SOLID.SRP.MoreExamples
         public static Color Red => new Color();
     }
 
+    #endregion
     class Violation4
     {
         public void PaymentProcessing()
@@ -135,5 +139,4 @@ namespace SOLID.SRP.MoreExamples
         //inheritance and residing in the same source file - ranting about level of separation - do we need to separate them into different source files?
     }
 
-    #endregion
 }
